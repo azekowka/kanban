@@ -5,6 +5,8 @@ import { Plus, Trash2, Pencil } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import type { ColumnType } from "@/lib/types"
+import EmojiPicker, { Emoji } from "emoji-picker-react";
+
 
 interface ColumnProps {
   column: ColumnType
@@ -16,6 +18,7 @@ interface ColumnProps {
 export function Column({ column, onAddSticker, onDeleteColumn, onUpdateColumn }: ColumnProps) {
   const [isEditingTitle, setIsEditingTitle] = useState(false)
   const [editedTitle, setEditedTitle] = useState(column.title)
+	const [open, setOpen] = useState(false);
 
   const handleTitleSave = () => {
     if (editedTitle.trim()) {
@@ -56,7 +59,20 @@ export function Column({ column, onAddSticker, onDeleteColumn, onUpdateColumn }:
         ) : (
           <h2 className="text-lg font-semibold text-foreground flex items-center gap-2">
             <span>{column.title}</span>
-            <span>{column.emoji}</span>
+            <Button onClick={() => setOpen(true)} className="w-8 h-8" variant={"ghost"} size={"icon"}>
+							{column.emoji ? (
+								<Emoji unified={column.emoji} size={20} />
+							) : (
+								<div className="w-5 h-5 rounded-sm bg-primary" />
+							)}
+						</Button>
+						<EmojiPicker
+							open={open}
+							onEmojiClick={(emoji) => {
+								onUpdateColumn(column.id, { emoji: emoji.unified });
+								setOpen(false);
+							}}
+						/>
           </h2>
         )}
         <div className="flex items-center gap-2">

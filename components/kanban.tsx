@@ -86,7 +86,7 @@ export default function KanBan() {
       const newColumn: ColumnType = {
         id: Date.now().toString(),
         title: newColumnTitle,
-        emoji: "🚀",
+        emoji: "",
       };
       setColumns([...columns, newColumn]);
       setNewColumnTitle("");
