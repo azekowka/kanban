@@ -17,6 +17,8 @@ import { Sticker } from "@/components/sticker";
 import { DotPattern } from "@/components/dot-pattern";
 import type { StickerType, ColumnType } from "@/lib/types";
 import { getBoardState, saveBoardState } from "@/neon/action";
+import Link from "next/link";
+import { GitButton } from "@/components/ui/git-button";
 
 // Debounce function
 const debounce = <F extends (...args: any[]) => any>(
@@ -156,6 +158,21 @@ export default function KanBan() {
           </h1>
         </div>
         <div className="flex items-center gap-3">
+        <GitButton asChild className="rounded-full py-0 ps-0">
+          <Link href="https://github.com/azekowka/kanban" target="_blank">
+            <div className="me-0.5 flex aspect-square h-full p-1.5">
+              <img
+                className="h-auto w-full rounded-full"
+                src="https://github.githubassets.com/favicons/favicon-dark.svg"
+                alt="github repo"
+                width={24}
+                height={24}
+                aria-hidden="true"
+              />
+            </div>
+            Star on GitHub
+          </Link>
+        </GitButton>
           {showColumnInput ? (
             <div className="flex items-center gap-2">
               <Input
@@ -176,7 +193,7 @@ export default function KanBan() {
             </div>
           ) : (
             <Button onClick={() => setShowColumnInput(true)} size="sm">
-              <Plus className="w-4 h-4 mr-2" />
+              <Plus className="w-4 h-4" />
             </Button>
           )}
         </div>
