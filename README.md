@@ -1,4 +1,4 @@
-#my open-source minimalistic kanban task organizer as other kanbans are suck
+# my open-source minimalistic kanban task organizer as other kanbans are suck
 
 ## TODO
 
