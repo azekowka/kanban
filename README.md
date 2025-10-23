@@ -3,8 +3,10 @@
 ## TODO
 
 - [x] Add auth using Clerk
+- [ ] Migrate Clerk Dev to Clerk Production
 - [x] Set up Neon DB serverless Postgres
-- [] Landing page (not necessary for now)
+- [ ] Experiment with adding more productivity-related features (Pomodoro, Timer, Phone detection ML model, and anything else)
+- [ ] Landing page (not necessary for now)
 
 ## Use locally, prod-ready app will be made soon (with your help too - PRs are welcome!)
 
