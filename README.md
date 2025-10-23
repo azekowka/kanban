@@ -22,6 +22,7 @@ Install, set up db, and run the app:
 ```bash
 pnpm i
 pnpm run db:setup
+pnpm build
 pnpm dev
 ```
 
