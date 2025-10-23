@@ -8,13 +8,12 @@ import type { ColumnType } from "@/lib/types"
 
 interface ColumnProps {
   column: ColumnType
-  columnIndex: number
-  onAddSticker: (columnId: string, columnIndex: number) => void
+  onAddSticker: () => void
   onDeleteColumn: (columnId: string) => void
   onUpdateColumn: (columnId: string, updates: Partial<ColumnType>) => void
 }
 
-export function Column({ column, columnIndex, onAddSticker, onDeleteColumn, onUpdateColumn }: ColumnProps) {
+export function Column({ column, onAddSticker, onDeleteColumn, onUpdateColumn }: ColumnProps) {
   const [isEditingTitle, setIsEditingTitle] = useState(false)
   const [editedTitle, setEditedTitle] = useState(column.title)
 
@@ -71,7 +70,7 @@ export function Column({ column, columnIndex, onAddSticker, onDeleteColumn, onUp
               <Pencil className="w-4 h-4" />
             </Button>
           )}
-          <Button onClick={() => onAddSticker(column.id, columnIndex)} size="icon" variant="ghost" className="h-8 w-8">
+          <Button onClick={onAddSticker} size="icon" variant="ghost" className="h-8 w-8">
             <Plus className="w-4 h-4" />
           </Button>
           <Button
