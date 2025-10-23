@@ -10,6 +10,7 @@ import {
 } from "@clerk/nextjs";
 import { Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { RainbowButton } from "@/components/ui/rainbow-button";
 import { Input } from "@/components/ui/input";
 import { Column } from "@/components/column";
 import { Sticker } from "@/components/sticker";
@@ -147,9 +148,7 @@ export default function KanBan() {
           </SignedIn>
           <SignedOut>
             <SignInButton mode="modal">
-              <Button size="sm">
-                Sign In
-              </Button>
+              <RainbowButton>Sign In</RainbowButton>
             </SignInButton>
           </SignedOut>
           <h1 className="text-2xl font-semibold text-foreground">
