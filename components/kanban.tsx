@@ -2,6 +2,12 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { useUser } from "@clerk/nextjs";
+import {
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  UserButton,
+} from "@clerk/nextjs";
 import { Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -135,7 +141,21 @@ export default function KanBan() {
     <div className="h-screen flex flex-col bg-background">
       {/* Toolbar */}
       <div className="border-b border-border px-6 py-4 flex items-center justify-between">
-        <h1 className="text-2xl font-semibold text-foreground">Kanban Board</h1>
+        <div className="flex items-center gap-4">
+          <SignedIn>
+            <UserButton afterSignOutUrl="/" />
+          </SignedIn>
+          <SignedOut>
+            <SignInButton mode="modal">
+              <Button size="sm">
+                Sign In
+              </Button>
+            </SignInButton>
+          </SignedOut>
+          <h1 className="text-2xl font-semibold text-foreground">
+            Kanban Board
+          </h1>
+        </div>
         <div className="flex items-center gap-3">
           {showColumnInput ? (
             <div className="flex items-center gap-2">
@@ -179,7 +199,7 @@ export default function KanBan() {
               </p>
               <Button onClick={() => setShowColumnInput(true)}>
                 <Plus className="w-4 h-4 mr-2" />
-                Add your first column
+                Add 1st column
               </Button>
             </div>
           </div>
